@@ -6,7 +6,7 @@ def show_state(ans):
     turtle.hideturtle()
     turtle.penup()
     turtle.goto(x, y)
-    turtle.write(arg=f"{ans}", align="center", font=("Helvetica", 8, "normal"))
+    turtle.write(arg=f"{ans}", align="center", font=("Helvetica", 8, "bold"))
     
     
 def states_to_learn():
@@ -21,7 +21,7 @@ def win_game():
     turtle.write(arg="Congratulations!", align="center", font=("Helvetica", 72, "normal"))
     turtle.goto(0, -24)
     turtle.hideturtle()
-    turtle.write(arg="You managed to guess all 50 states!", align="center", font=("Helvetica", 24, "normal"))
+    turtle.write(arg="You managed to guess all 13 states!", align="center", font=("Helvetica", 24, "normal"))
     
     
 def exit_game(number):
@@ -30,25 +30,25 @@ def exit_game(number):
     turtle.write(arg="Try harder!", align="center", font=("Helvetica", 72, "normal"))
     turtle.goto(0, -24)
     turtle.hideturtle()
-    turtle.write(arg=f"You managed to guess {number}/50 states!", align="center", font=("Helvetica", 24, "normal"))
+    turtle.write(arg=f"You managed to guess {number}/13 states!", align="center", font=("Helvetica", 24, "normal"))
 
 
 screen = turtle.Screen()
-screen.title("U.S. States Game")
+screen.title("Malaysia States Game")
 
-image = "blank_states.gif"
-screen.setup(width=725, height=491)
+image = "malaysia_blank_map.png"
+screen.setup(width=1024, height=390)
 screen.bgpic(image)
 
-df = pd.read_csv("50_states.csv")
+df = pd.read_csv("13_MY_states.csv")
 state_list = df["state"].to_list()
 guessed_states = []
 score = 0
 
-all_states = 50
+all_states = 13
 while score != all_states:
-    answer = screen.textinput(title=f"{score}/50 States", prompt="What's another state's name?").title()
-    
+    answer = screen.textinput(title=f"{score}/13 States", prompt="What's another state's name?").title()
+
     if answer == "Exit":
         break
 
@@ -66,5 +66,5 @@ if score == all_states:
 else:
     states_to_learn()
     exit_game(score)
-    
+
 turtle.mainloop()
